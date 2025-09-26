@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html>
+
+
+
+
+
+<head>
+  <!-- dongli web template -->
+  <!-- <link href="css/two_style.css" rel="stylesheet" /> -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="Ming-Unitok-Audio">
+  <meta property="og:title" content="Ming-Unitok-Audio" />
+  <meta property="og:description"
+    content="Ming-Unitok-Audio: Unified Representation And Speech Language Model for Joint Speech Understanding, Generation and Editing" />
+  <meta property="og:url" content="URL OF THE WEBSITE" />
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/image/video_t1.png" />
+  <meta property="og:image:width" content="2412" />
+  <meta property="og:image:height" content="1394" />
+
+
+
+  <title>Ming-Unitok-Audio</title>
+  <link rel="icon" type="image/x-icon" href="static/images/ant-bailing.png">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+<style>
+    body {
+        background-color: #f0f2f5;
+    }
+
+    /* 1. 外层的大框样式 */
+    .main-container {
+        max-width: 1400px;
+        margin: 2rem auto;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        background-color: white;
+        
+        /* 关键改动：移除了 background-color 和 border-radius */
+        box-shadow: 
+            0 0 0 1px rgba(0, 0, 0, 0.08), 
+            0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    /* 内部模块的标题 */
+    .main-container .box-title {
+        font-size: 1.75rem;
+        font-weight: 600;
+        color: #363636;
+        padding: 0 0rem 0 0rem;
+        margin-bottom: 2.5rem;
+    }
+
+    /* 2. 内部的独立表格模块 */
+    .acoustic-editing-module {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        border-radius: 8px;
+        background-color: white;
+        overflow: hidden;
+        box-shadow:
+            0 0 0 1px rgba(0, 0, 0, 0.08),
+            0 8px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    /* 内部模块的标题 */
+    .acoustic-editing-module .box-title {
+        font-size: 1.75rem;
+        font-weight: 600;
+        color: #363636;
+        padding: 1.5rem 2rem 0 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* 横向滚动的容器 */
+    .acoustic-editing-module .scrollable-table-container {
+        overflow-x: auto;
+        padding: 0 2rem 1.5rem 2rem;
+    }
+
+    /* 表格样式 */
+    .acoustic-editing-module .data-table {
+        width: 100%;
+        min-width: 1000px;
+        border-collapse: collapse;
+    }
+
+    /* 单元格样式 */
+    .acoustic-editing-module .data-table th,
+    .acoustic-editing-module .data-table td {
+        padding: 1rem 1.25rem;
+        vertical-align: middle;
+        text-align: left;
+        border: none;
+    }
+
+    /* 表头样式 */
+    .acoustic-editing-module .data-table th {
+        font-weight: bold;
+        white-space: nowrap;
+        border-bottom: 2px solid #333;
+    }
+    
+    /* 表格内容行样式 */
+    .acoustic-editing-module .data-table tbody tr {
+        border-bottom: 1px solid #eeeeee;
+    }
+
+    .acoustic-editing-module .data-table audio {
+        width: 250px;
+    }
+
+</style>
+<body>
+
+
+
+  <section class="hero banner">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title" style="display: flex; align-items: center;">
+              <!-- <i class="gongbiao-icon" style="font-size: 100px; margin-right: 20px; margin-top: 10px;"></i>
+              <span style="margin-left: 0px;">
+                <span style="color: rgb(44, 185, 250); font-weight: bold; font-size: 52px;">Ming</span><span style="color: white; font-weight: bold; font-size: 52px;">-Unitok-Audio:</span></br>
+                <span style="color: white; font-weight: bold;  font-size: 52px;">Unified Representation And Speech Language Model</span></br>
+                <span style="color: white; font-weight: bold;  font-size: 52px;">for
+                  Joint Speech Understanding, Generation and Editing</span>
+
+              </span> -->
+              <!-- 1. 添加一个父容器 div，并应用 flex 布局 -->
+              <div style="display: flex; align-items: flex-start;">
+
+                  <!-- 2. 图标代码：最关键的是移除 margin-top: 10px; -->
+                  <i class="gongbiao-icon" style="font-size: 100px; margin-right: 20px;"></i>
+                
+                  <!-- 标题文本部分保持不变 -->
+                  <span style="margin-left: 0px;">
+                      <span style="color: rgb(44, 185, 250); font-weight: bold; font-size: 52px;">Ming</span><span style="color: white; font-weight: bold; font-size: 52px;">-Unitok-Audio:</span><br/>
+                      <span style="color: white; font-weight: bold;  font-size: 52px;">Unified Representation And Speech Language Model</span><br/>
+                      <span style="color: white; font-weight: bold;  font-size: 52px;">for
+                        Joint Speech Understanding, Generation and Editing</span>
+                  </span>
+
+              </div>
+
+            </h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+              <span class="author-block"></span>
+              <a href="https://github.com/inclusionAI" target="_blank" style="color: rgb(170,170,170) !important; text-decoration: underline;">Inclusion AI, Ant Group</a><sup>∗</sup>
+              </span>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span class="eql-cntrb"><small><sup>∗</sup>See the Contributions section of our Technical Report for the complete author list.</small></span>
+            </div>
+
+
+            <div class="column has-text-centered">              
+              <div class="publication-links">
+                <!-- Arxiv PDF link -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2506.09344" target="_blank"
+                    class="external-link button is-normal is-rounded is-white">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Technical Report</span>
+                  </a>
+                </span>
+
+                <!-- Video link -->
+<!--                 <span class="link-block">
+                  <a href=""
+                    target="_blank" class="external-link button is-normal is-rounded is-white">
+                    <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                    </span>
+                    <span>Video</span>
+                  </a>
+                </span> -->
+
+                <!-- Github link -->
+                <span class="link-block">
+                  <a href="https://github.com/inclusionAI/Ming/tree/main" target="_blank"
+                    class="external-link button is-normal is-rounded is-white">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+
+                <span class="link-block">
+                    <a href="https://huggingface.co/inclusionAI/Ming-Lite-Omni" target="_blank" class="external-link button is-normal is-rounded is-white">
+                        <span class="icon">🤗</span>
+                        <span>Hugging Face</span>
+                    </a>
+                </span>
+
+                <span class="link-block">
+                    <a href="https://www.modelscope.cn/models/inclusionAI/Ming-Lite-Omni" target="_blank" class="external-link button is-normal is-rounded is-white">
+                        <span class="icon">🤖</span>
+                        <span>ModelScope</span>
+                    </a>
+                </span>
+
+<!--                 <span class="link-block">
+                  <a href="" target="_blank" class="external-link button is-normal is-rounded is-white">
+                      <span class="icon">🧨</span>
+                      <span>Transformers</span>
+                  </a>
+                </span> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Teaser image-->
+  <section class="hero teaser">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <br>
+        <img src="static/images/teaser.jpg"
+          alt="teaser"/>
+        </h2>
+      </div>
+      <!-- </div> -->
+    </div>
+  </section>
+  <!-- End teaser image -->
+
+  <!-- Paper abstract -->
+  <section class="hero is-light">
+    <div class="hero-body">
+      <div class="container is-max-desktop is-centered has-text-centered">
+        <!-- <div class="columns is-centered has-text-centered"> -->
+        <!-- <div class="column is-four-fifths"> -->
+        <h2 class="title is-3">Abstract</h2>
+        <!-- <h2 class="title is-3">Abstract</h2> -->
+        <div class="content has-text-justified">
+          <p>
+          We propose Ming-Omni, a unified multimodal model capable of processing images, text, audio, and
+          video, while demonstrating strong proficiency in both speech and image generation. Ming-Omni
+          employs dedicated encoders to extract tokens from different modalities, which are then processed
+          by Ling, an MoE architecture equipped with newly proposed modality-specific routers. This design
+          enables a single model to efficiently process and fuse multimodal inputs within a unified framework,
+          thereby facilitating diverse tasks without requiring separate models, task-specific fine-tuning, or
+          structural redesign. Importantly, Ming-Omni extends beyond conventional multimodal models by
+          supporting audio and image generation. This is achieved through the integration of an advanced
+          audio decoder for natural-sounding speech and Ming-Lite-Uni for high-quality image generation,
+          which also allow the model to engage in context-aware chatting, perform text-to-speech conversion,
+          and conduct versatile image editing. Our experimental results showcase Ming-Omni offers a powerful
+          solution for unified perception and generation across all modalities. Notably, our proposed Ming-Omni
+          is the first open-source model we are aware of to match GPT-4o in modality support, and we
+          release all code and model weights to encourage further research and development in the community.
+          </p>
+        </div>
+        <!-- </div> -->
+        <!-- </div> -->
+      </div>
+    </div>
+  </section>
+  <!-- End paper abstract -->
+
+
+
+
+
+
+
+  <!-- Image carousel -->
+  <section class="hero is-small">
+    <!-- <section class="hero is-light"> -->
+    <div class="hero-body">
+      <div class="container is-max-desktop is-centered has-text-centered">
+        <h2 class="title is-3">Overall Framework of <span style="color: rgb(16, 106, 190);">Ming</span>-Omni</h2>
+        <div class="item">
+          <!-- Your image here -->
+          <img src="static/images/method.jpg"
+            alt="method" />
+          <h2 class="content has-text-justified">
+            The overall framework of Ming-Omni. Ming-Omni extracts visual and audio tokens with dedicated encoders. These
+            tokens are then combined with text tokens and processed through Ling (MoE architecture with modality-specific routers).
+            Subsequently, it generates speech through an audio decoder and enables image generation via a diffusion model.
+          </h2>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+  </section>
+  <!-- End image carousel -->
+
+<!-- 
+  <section class="section hero is-small is-light 2d">
+    <div class="hero-body">
+      <div class="container is-centered has-text-centered">
+        <h2 class="title is-3">Overview of <span style="color: rgb(16, 106, 190);">Ming</span>-Omni</h2>
+        <div class="columns is-mobile is-centered">
+          <div class="column">
+            <video poster="" id="tree1" controls muted loop width="90%">
+              <source src="https://cloud.video.taobao.com/vod/vs4L24EAm6IQ5zM3SbN5AyHCSqZIXwmuobrzqNztMRM.mp4"
+                type="video/mp4">
+            </video>
+            <h3 class="title is-5">Video Instructions for Ming-Omni (This video contains audio)</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+
+  <!-- <section class="section hero is-small 2d">
+    <div class="hero-body">
+      <div class="container is-centered has-text-centered">
+        <h2 class="title is-3">Unified Intelligence, Versatile Applications</h2>
+        <div class="columns is-mobile is-centered">
+          <div class="column is-half">
+            <video poster="" id="tree1" controls muted loop width="100%">
+              <source src="https://cloud.video.taobao.com/vod/8gvM_l85vmdlvM3csJ459NfoajYdkvTprH3fGPoaJLc.mp4"
+                type="video/mp4">
+            </video>
+            <h3 class="title is-5">Basic Chatting</h3>
+          </div>
+          <div class="column is-half">
+            <video poster="" id="tree1" controls muted loop width="100%">
+              <source src="https://cloud.video.taobao.com/vod/2dQWYEW_HH-2-Rgfc2u1-6eNpKybnLqHK_FilA0eb08.mp4"
+                type="video/mp4">
+            </video>
+            <h3 class="title is-5">Visual Positioning</h3>
+          </div>
+        </div>
+        <div class="columns is-mobile is-centered">
+          <div class="column is-half">
+            <video poster="" id="tree1" controls muted loop width="100%">
+              <source src="https://cloud.video.taobao.com/vod/T7Y5e1Wr7ofENFEx-5_g8y5f5bInkpKP0eODI-sVAHs.mp4"
+                type="video/mp4">
+            </video>
+            <h3 class="title is-5">Mathematics</h3>
+          </div>
+          <div class="column is-half">
+            <video poster="" id="tree1" controls muted loop width="100%">
+              <source src="https://cloud.video.taobao.com/vod/Szp0rqz2e1lpX3pkUDp4EFSC-KRMIuHZcqtxlx4rfjk.mp4"
+                type="video/mp4">
+            </video>
+            <h3 class="title is-5">Mobile Phone Interaction</h3>
+          </div>
+        </div>        
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <section class="section hero is-small is-light 2d">
+    <div class="hero-body">
+      <div class="container is-centered has-text-centered">
+        <h2 class="title is-3">Generation and Understanding, All in One Model</h2>
+        <div class="columns is-mobile is-centered">
+          <div class="column is-half">
+            <video poster="" id="tree1" controls muted loop width="100%">
+              <source src="https://cloud.video.taobao.com/vod/swhIKM_X4z_Mzn0Y2H-vxODDdg9cEZaWY1Mx-eQLSbQ.mp4"
+                type="video/mp4">
+            </video>
+            <h3 class="title is-5">Image</h3>
+          </div>
+          <div class="column is-half">
+            <video poster="" id="tree1" controls muted loop width="100%">
+              <source src="https://cloud.video.taobao.com/vod/YiuzWc4invH0V--IOwmW8zznDDa902Exop3sHPu-aMI.mp4"
+              type="video/mp4">
+            </video>
+            <h3 class="title is-5">Image</h3>
+          </div>
+        </div> 
+        <div class="columns is-mobile is-centered">
+          <div class="column is-half">
+            <video poster="" id="tree1" controls muted loop width="100%">
+              <source src="https://cloud.video.taobao.com/vod/DulRhChUz7pN_5-3vZtkSVUMU5RfsJZOx0K6aswnJHg.mp4"
+                type="video/mp4">
+            </video>
+            <h3 class="title is-5">Video (This video contains audio)</h3>
+          </div>
+          <div class="column is-half">
+            <video poster="" id="tree1" controls muted loop width="100%">
+              <source src="https://cloud.video.taobao.com/vod/NKyLG8dx2wODx9j4lidW9IA-BBJ5dR3wlAj40vCHgIQ.mp4"
+                type="video/mp4">
+            </video>
+            <h3 class="title is-5">Video (This video contains audio)</h3>
+          </div>          
+        </div>    
+      </div>
+    </div>
+  </section>
+ -->
+
+
+
+
+<!-- 
+  <section class="section hero is-small 2d">
+    <div class="hero-body">
+      <div class="container is-centered has-text-centered">
+        <h2 class="title is-3">Fluid Transition Between Speech and Text</h2>
+
+        <table border=4 style="width: 100%; height: 100%; border-collapse: collapse;">
+          <tr>
+            <td style="vertical-align: middle;" rowspan="2">Dialect Understanding</td>
+            <td style="text-align: center; vertical-align: middle; padding: 20px;">
+              <div><span style="font-weight: bold;">Input:</span></div>
+              <audio controls style="width: 190px;">
+                <source src="static/audio/a1.wav" autoplay="">
+              </audio>
+              <div><span style="font-weight: bold;">Output:</span> "[方言-粤语] 你在干什么, 是不是不想聊天"</div>
+            </td>
+            <td style="text-align: center; vertical-align: middle; padding: 20px;">
+              <div><span style="font-weight: bold;">Input:</span></div>
+              <audio controls style="width: 190px;">
+                <source src="static/audio/a11.wav" autoplay="">
+              </audio>
+              <div><span style="font-weight: bold;">Output:</span> "[方言-上海话] 我们考试还没定下来呢"</div>
+            </td>      
+          </tr>
+          <tr>
+            <td style="text-align: center; vertical-align: middle; padding: 20px;">
+              <div><span style="font-weight: bold;">Input:</span></div>
+              <audio controls style="width: 190px;">
+                <source src="static/audio/a2.wav" autoplay="">
+              </audio>
+              <div><span style="font-weight: bold;">Output:</span> "[方言-闽南语] 宝贝, 早点休息, 晚安"</div>
+            </td>
+            <td style="text-align: center; vertical-align: middle; padding: 20px;">
+              <div><span style="font-weight: bold;">Input:</span></div>
+              <audio controls style="width: 190px;">
+                <source src="static/audio/a22.wav" autoplay="">
+              </audio>
+              <div><span style="font-weight: bold;">Output:</span> "[方言-川渝方言] 我难受的很, 别人都睡了"</div>
+            </td>              
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;">Voice Cloning</td>
+            <td style="padding: 20px;">
+              <div><span style="font-weight: bold;">Input1:</span></div>
+              <audio controls style="width: 190px;">
+                <source src="static/audio/a3.wav" autoplay="">
+              </audio>
+              <div><span style="font-weight: bold;">Input2:</span> "全球每年有超过一百三十五万人，因交通事故而死亡"</div>
+              <div><span style="font-weight: bold;">Output:</span></div>
+              <audio controls style="width: 190px;">
+                <source src="static/audio/a4.wav" autoplay="">
+              </audio>
+            </td>
+            <td style="padding: 20px;">
+              <div><span style="font-weight: bold;">Input1:</span></div>
+              <audio controls style="width: 190px;">
+                <source src="static/audio/a33.wav" autoplay="">
+              </audio>
+              <div><span style="font-weight: bold;">Input2:</span> "The stained glass offered a hypnotic atmosphere"</div>
+              <div><span style="font-weight: bold;">Output:</span></div>
+              <audio controls style="width: 190px;">
+                <source src="static/audio/a44.wav" autoplay="">
+              </audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;">Spoken Chatting</td>
+            <td style="padding: 20px;">
+              <div><span style="font-weight: bold;">Input:</span></div>
+              <audio controls style="width: 190px;">
+                <source src="static/audio/a5.wav" autoplay="">
+              </audio>
+              <div><span style="font-weight: bold;">Output:</span></div>
+              <audio controls style="width: 190px;">
+                <source src="static/audio/a6.wav" autoplay="">
+              </audio>
+            </td>
+            <td style="padding: 20px;">
+              <div><span style="font-weight: bold;">Input:</span></div>
+              <audio controls style="width: 190px;">
+                <source src="static/audio/a55.wav" autoplay="">
+              </audio>
+              <div><span style="font-weight: bold;">Output:</span></div>
+              <audio controls style="width: 190px;">
+                <source src="static/audio/a66.wav" autoplay="">
+              </audio>
+            </td>
+          </tr>                  
+        </table>
+        
+      </div>
+    </div>
+  </section> -->
+
+    <!-- ASR -->
+     <div class="main-container">
+      <div class="content-box">
+        <h2 class="box-title">Audio Understanding</h2>
+        <div class="acoustic-editing-module">
+            <!-- 这是最外层的白色卡片 -->
+            <div class="content-box">
+                
+                <h2 class="box-title">Dialect Understanding</h2>
+                
+                <div class="scrollable-table-container">
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Input</th>
+                                <th>Transcription</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><audio controls src=""></audio></td>
+                                <td>I want the voice to sound conversational and relaxed.</td>
+                            </tr>
+                            <tr>
+                                <td><audio controls src=""></audio></td>
+                                <td>I want the voice to sound conversational and relaxed.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+      </div>
+        
+        <div class="acoustic-editing-module">
+
+            <!-- 这是最外层的白色卡片 -->
+            <div class="content-box">
+                
+                <h2 class="box-title">Speech Emotion Recognition</h2>
+                
+                <div class="scrollable-table-container">
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Instruction</th>
+                                <th>Transcription</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><audio controls src=""></audio></td>
+                                <td>I want the voice to sound conversational and relaxed.</td>
+                            </tr>
+                            <tr>
+                                <td><audio controls src=""></audio></td>
+                                <td>I want the voice to sound conversational and relaxed.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+
+     </div>
+
+     <!-- TTS -->
+     <div class="main-container">
+      <div class="content-box">
+        <h2 class="box-title">Audio Generation</h2>
+        <div class="acoustic-editing-module">
+            <!-- 这是最外层的白色卡片 -->
+            <div class="content-box">
+                
+                <h2 class="box-title">Voice Clone</h2>
+                
+                <div class="scrollable-table-container">
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Input</th>
+                                <th>Transcription</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><audio controls src=""></audio></td>
+                                <td>I want the voice to sound conversational and relaxed.</td>
+                            </tr>
+                            <tr>
+                                <td><audio controls src=""></audio></td>
+                                <td>I want the voice to sound conversational and relaxed.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+      </div>
+        
+        <div class="acoustic-editing-module">
+
+            <!-- 这是最外层的白色卡片 -->
+            <div class="content-box">
+                
+                <h2 class="box-title">Multi-lingual Synthesis</h2>
+                
+                <div class="scrollable-table-container">
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Instruction</th>
+                                <th>Transcription</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><audio controls src=""></audio></td>
+                                <td>I want the voice to sound conversational and relaxed.</td>
+                            </tr>
+                            <tr>
+                                <td><audio controls src=""></audio></td>
+                                <td>I want the voice to sound conversational and relaxed.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+
+     </div>
+
+
+     <!-- Edit -->
+     <div class="main-container">
+      <div class="content-box">
+        <h2 class="box-title">Instruction-Guided Free-Form Speech Editing</h2>
+          <!-- Semantic Editing - Delete -->
+          <div class="acoustic-editing-module">
+              <!-- 这是最外层的白色卡片 -->
+              <div class="content-box">
+                  <h2 class="box-title">Semantic Editing - Delete</h2>
+                  <div class="scrollable-table-container">
+                      <table class="data-table">
+                          <thead>
+                              <tr>
+                                  <th>Instruction</th>
+                                  <th>Transcription</th>
+                                  <th>Target Transcription</th>
+                                  <th>Before Edit</th>
+                                  <th>Speechedit Result</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>delete '比普通的茶叶要'.</td>
+                                  <td>花草茶的口味一般比普通的茶叶要苦一些</td>
+                                  <td>花草茶的口味一般苦一些</td>
+                                  <td><audio controls src="static/audio/edit/delete1.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/delete_1_1.wav"></audio></td>
+                              </tr>
+                              <tr>
+                                  <td>delete the characters or words from index 11 to index 15.</td>
+                                  <td>我吃了点燕麦片煎鸡蛋还喝了点橙汁</td>
+                                  <td>我吃了点燕麦片煎鸡蛋汁</td>
+                                  <td><audio controls src="static/audio/edit/delete_2.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/delete_2_2.wav"></audio></td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+
+          </div>
+        </div>
+
+          <!-- Semantic Editing - Insert -->
+          <div class="acoustic-editing-module">
+            <div class="content-box">
+                
+                <h2 class="box-title">Semantic Editing - Insert</h2>
+                
+                <div class="scrollable-table-container">
+                    
+                    <table class="data-table">
+                        <thead>
+                              <tr>
+                                  <th>Instruction</th>
+                                  <th>Transcription</th>
+                                  <th>Target Transcription</th>
+                                  <th>Before Edit</th>
+                                  <th>Speechedit Result</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>insert '简直' after the character or word at index 8.</td>
+                                  <td>真是个浪漫的邂逅可以说是英雄救美了</td>
+                                  <td>真是个浪漫的邂逅简直可以说是英雄救美了</td>
+                                  <td><audio controls src="static/audio/edit/insert_1.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/insert_1_1.wav"></audio></td>
+                              </tr>
+                              <tr>
+                                  <td>insert '真正' before the character or word '好'</td>
+                                  <td>就有道而正焉可谓好学也已</td>
+                                  <td>就有道而正焉可谓真正好学也已</td>
+                                  <td><audio controls src="static/audio/edit/insert_2.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/insert_2_2.wav"></audio></td>
+                              </tr>
+                          </tbody>
+                    </table>
+                </div>
+            </div>
+          </div>
+
+          <!-- Semantic Editing - Substitute -->
+          <div class="acoustic-editing-module">
+            <div class="content-box">
+                
+                <h2 class="box-title">Semantic Editing - Substitute</h2>
+                
+                <div class="scrollable-table-container">
+                    
+                    <table class="data-table">
+                        <thead>
+                              <tr>
+                                  <th>Instruction</th>
+                                  <th>Transcription</th>
+                                  <th>Target Transcription</th>
+                                  <th>Before Edit</th>
+                                  <th>Speechedit Result</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>substitute '现实' with '理想'.</td>
+                                  <td>现难以成为完善个人账户的现实选项</td>
+                                  <td>现难以成为完善个人账户的理想选项</td>
+                                  <td><audio controls src="static/audio/edit/sub_1.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/sub_1_1.wav"></audio></td>
+                              </tr>
+                              <tr>
+                                  <td>substitute the characters or words from index 8 to index 10 with '五万元'.</td>
+                                  <td>当时我想等筹齐两万元聘礼就送她妈回家</td>
+                                  <td>当时我想等筹齐五万元聘礼就送她妈回家</td>
+                                  <td><audio controls src="static/audio/edit/sub_2.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/sub_2_2.wav"></audio></td>
+                              </tr>
+                          </tbody>
+                    </table>
+                </div>
+            </div>
+          </div>
+
+          <!-- Acoustic Editing - Speed -->
+          <div class="acoustic-editing-module">
+            <div class="content-box">
+                
+                <h2 class="box-title">Acoustic Editing - Speed</h2>
+                
+                <div class="scrollable-table-container">
+                    
+                    <table class="data-table">
+                        <thead>
+                              <tr>
+                                  <th>Instruction</th>
+                                  <th>Transcription</th>
+                                  <th>Target Transcription</th>
+                                  <th>Before Edit</th>
+                                  <th>Speechedit Result</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>substitute '现实' with '理想'.</td>
+                                  <td>现难以成为完善个人账户的现实选项</td>
+                                  <td>现难以成为完善个人账户的理想选项</td>
+                                  <td><audio controls src="static/audio/edit/sub_1.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/sub_1_1.wav"></audio></td>
+                              </tr>
+                              <tr>
+                                  <td>substitute the characters or words from index 8 to index 10 with '五万元'.</td>
+                                  <td>当时我想等筹齐两万元聘礼就送她妈回家</td>
+                                  <td>当时我想等筹齐五万元聘礼就送她妈回家</td>
+                                  <td><audio controls src="static/audio/edit/sub_2.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/sub_2_2.wav"></audio></td>
+                              </tr>
+                          </tbody>
+                    </table>
+                </div>
+            </div>
+          </div>
+
+          <!-- Acoustic Editing - Pitch -->
+          <div class="acoustic-editing-module">
+            <div class="content-box">
+                
+                <h2 class="box-title">Acoustic Editing - Pitch</h2>
+                
+                <div class="scrollable-table-container">
+                    
+                    <table class="data-table">
+                        <thead>
+                              <tr>
+                                  <th>Instruction</th>
+                                  <th>Transcription</th>
+                                  <th>Target Transcription</th>
+                                  <th>Before Edit</th>
+                                  <th>Speechedit Result</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>substitute '现实' with '理想'.</td>
+                                  <td>现难以成为完善个人账户的现实选项</td>
+                                  <td>现难以成为完善个人账户的理想选项</td>
+                                  <td><audio controls src="static/audio/edit/sub_1.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/sub_1_1.wav"></audio></td>
+                              </tr>
+                              <tr>
+                                  <td>substitute the characters or words from index 8 to index 10 with '五万元'.</td>
+                                  <td>当时我想等筹齐两万元聘礼就送她妈回家</td>
+                                  <td>当时我想等筹齐五万元聘礼就送她妈回家</td>
+                                  <td><audio controls src="static/audio/edit/sub_2.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/sub_2_2.wav"></audio></td>
+                              </tr>
+                          </tbody>
+                    </table>
+                </div>
+            </div>
+          </div>
+
+          <!-- Acoustic Editing - Volume -->
+          <div class="acoustic-editing-module">
+            <div class="content-box">
+                
+                <h2 class="box-title">Acoustic Editing - Volume</h2>
+                
+                <div class="scrollable-table-container">
+                    
+                    <table class="data-table">
+                        <thead>
+                              <tr>
+                                  <th>Instruction</th>
+                                  <th>Transcription</th>
+                                  <th>Target Transcription</th>
+                                  <th>Before Edit</th>
+                                  <th>Speechedit Result</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>substitute '现实' with '理想'.</td>
+                                  <td>现难以成为完善个人账户的现实选项</td>
+                                  <td>现难以成为完善个人账户的理想选项</td>
+                                  <td><audio controls src="static/audio/edit/sub_1.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/sub_1_1.wav"></audio></td>
+                              </tr>
+                              <tr>
+                                  <td>substitute the characters or words from index 8 to index 10 with '五万元'.</td>
+                                  <td>当时我想等筹齐两万元聘礼就送她妈回家</td>
+                                  <td>当时我想等筹齐五万元聘礼就送她妈回家</td>
+                                  <td><audio controls src="static/audio/edit/sub_2.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/sub_2_2.wav"></audio></td>
+                              </tr>
+                          </tbody>
+                    </table>
+                </div>
+            </div>
+          </div>
+
+    </div>
+
+
+
+
+
+  <!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Reference</h2>
+      <pre>
+      <code>
+@article{Mingomni2025,
+  title   = {Ming-Omni: A Unified Multimodal Model for Perception and Generation},
+  author  = {Inclusion AI, Ant Group},
+  journal = {Technical Report},
+  year    = {2025}
+}
+@article{Mingunify2025,
+  title   = {Ming-Lite-Uni: Advancements in Unified Architecture for Natural Multimodal Interaction},
+  author  = {Inclusion AI, Ant Group},
+  journal = {Technical Report, arXiv:2505.02471},
+  year    = {2025}
+}
+</code>
+</pre>
+    </div>
+  </section>
+
+
+
+
+  <script>
+    // bulmaCarousel.attach('#results-carousel11', {
+    //     slidesToScroll: 1,
+    //     slidesToShow: 2,
+    //     infinite: true,
+    //     autoplay: true,
+    //     // autoplay: true,
+    // });
+    bulmaCarousel.attach('#results-carousel22', {
+      slidesToScroll: 1,
+      slidesToShow: 2,
+      infinite: true,
+      autoplay: false,
+    });
+    bulmaCarousel.attach('#results-carousel33', {
+      slidesToScroll: 1,
+      slidesToShow: 2,
+      infinite: true,
+      autoplay: false,
+    });
+  </script>
+
+  <!-- Statcounter tracking code -->
+
+  <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+  <!-- End of Statcounter Code -->
+
+</body>
+
+</html>
