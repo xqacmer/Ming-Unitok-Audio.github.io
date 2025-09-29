@@ -54,6 +54,7 @@
         max-width: 1400px;
         margin: 2rem auto;
         padding: 2rem;
+        /* padding: 1rem 2rem 0 2rem; 减少顶部内边距 */
         display: flex;
         flex-direction: column;
         gap: 2rem;
@@ -61,8 +62,26 @@
         
         /* 关键改动：移除了 background-color 和 border-radius */
         box-shadow: 
+            /* 0 0 0 1px rgba(0, 0, 0, 0.08), 
+            0 4px 12px rgba(0, 0, 0, 0.04); */
+            0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+    }
+    .main-container2 {
+        max-width: 1400px;
+        margin: 2rem auto;
+        /* padding: 2rem; */
+        padding: 0 2rem 0 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        background-color: white;
+        
+        /* 关键改动：移除了 background-color 和 border-radius */
+        /* box-shadow: 
             0 0 0 1px rgba(0, 0, 0, 0.08), 
-            0 4px 12px rgba(0, 0, 0, 0.04);
+            0 4px 12px rgba(0, 0, 0, 0.04); */
+        box-shadow:
+          0 .5rem 1rem rgba(0, 0, 0, .15) !important;
     }
 
     /* 内部模块的标题 */
@@ -81,8 +100,9 @@
         background-color: white;
         overflow: hidden;
         box-shadow:
-            0 0 0 1px rgba(0, 0, 0, 0.08),
-            0 8px 20px rgba(0, 0, 0, 0.06);
+            /* 0 0 0 1px rgba(0, 0, 0, 0.08),
+            0 8px 20px rgba(0, 0, 0, 0.06); */
+            0 .2rem 1rem rgba(0, 0, 0, .15) !important;
     }
 
     /* 内部模块的标题 */
@@ -136,7 +156,6 @@
 <body>
 
 
-
   <section class="hero banner">
     <div class="hero-body">
       <div class="container is-max-desktop">
@@ -159,7 +178,7 @@
                 
                   <!-- 标题文本部分保持不变 -->
                   <span style="margin-left: 0px;">
-                      <span style="color: rgb(44, 185, 250); font-weight: bold; font-size: 52px;">Ming</span><span style="color: white; font-weight: bold; font-size: 52px;">-Unitok-Audio:</span><br/>
+                      <span style="color: rgb(44, 185, 250); font-weight: bold; font-size: 52px;">Ming</span><span style="color: white; font-weight: bold; font-size: 52px;">-UniAudio:</span><br/>
                       <span style="color: white; font-weight: bold;  font-size: 52px;">Unified Representation And Speech Language Model</span><br/>
                       <span style="color: white; font-weight: bold;  font-size: 52px;">for
                         Joint Speech Understanding, Generation and Editing</span>
@@ -243,13 +262,13 @@
     </div>
   </section>
 
-
+<div class="main-container2">
   <!-- Teaser image-->
   <section class="hero teaser">
     <div class="hero-body">
       <div class="container is-max-desktop">
         <br>
-        <img src="static/images/teaser.jpg"
+        <img src="static/images/uniaudio-video-demo.png"
           alt="teaser"/>
         </h2>
       </div>
@@ -257,9 +276,11 @@
     </div>
   </section>
   <!-- End teaser image -->
+</div>
 
   <!-- Paper abstract -->
-  <section class="hero is-light">
+  <div class="main-container2">
+  <!-- <section class="hero is-light"> -->
     <div class="hero-body">
       <div class="container is-max-desktop is-centered has-text-centered">
         <!-- <div class="columns is-centered has-text-centered"> -->
@@ -268,7 +289,7 @@
         <!-- <h2 class="title is-3">Abstract</h2> -->
         <div class="content has-text-justified">
           <p>
-          We propose Ming-Omni, a unified multimodal model capable of processing images, text, audio, and
+          <!-- We propose Ming-Omni, a unified multimodal model capable of processing images, text, audio, and
           video, while demonstrating strong proficiency in both speech and image generation. Ming-Omni
           employs dedicated encoders to extract tokens from different modalities, which are then processed
           by Ling, an MoE architecture equipped with newly proposed modality-specific routers. This design
@@ -281,22 +302,35 @@
           and conduct versatile image editing. Our experimental results showcase Ming-Omni offers a powerful
           solution for unified perception and generation across all modalities. Notably, our proposed Ming-Omni
           is the first open-source model we are aware of to match GPT-4o in modality support, and we
-          release all code and model weights to encourage further research and development in the community.
+          release all code and model weights to encourage further research and development in the community. -->
+          With the rapid advancement of large language models (LLMs), LLM-based speech foundation
+          models have achieved significant improvements in both speech understanding and generation. These
+          advances enable more accurate and fine-grained comprehension of spoken language, as well as more
+          fluent and natural speech output for human-machine interaction. From the perspective of speech
+          representation, most existing speech LLMs either separate the representations for understanding
+          and generation tasks or employ discrete representations for both. The former approach cannot edit
+          speech, while the latter suffers from loss of speech details due to quantization. In terms of speech
+          tasks, there is currently no single model capable of performing semantic and acoustic editing on
+          input speech through free-form instructions. This multiround editing capability has already been
+          well demonstrated in the image domain. To address the issue of inconsistent representations between
+          understanding and generation, we propose a continuous audio tokenizer that unifies both speech
+          understanding and generation tasks. Furthermore, we introduce a novel capability, free-form speech
+          editing, which enables fine-grained and high-fidelity speech manipulation.
           </p>
         </div>
         <!-- </div> -->
         <!-- </div> -->
       </div>
     </div>
-  </section>
+  <!-- </section> -->
+  </div>
   <!-- End paper abstract -->
 
 
 
 
 
-
-
+<div class="main-container2">
   <!-- Image carousel -->
   <section class="hero is-small">
     <!-- <section class="hero is-light"> -->
@@ -319,7 +353,7 @@
     </div>
   </section>
   <!-- End image carousel -->
-
+</div>
 <!-- 
   <section class="section hero is-small is-light 2d">
     <div class="hero-body">
@@ -423,9 +457,6 @@
   </section>
  -->
 
-
-
-
 <!-- 
   <section class="section hero is-small 2d">
     <div class="hero-body">
@@ -528,6 +559,47 @@
             <!-- 这是最外层的白色卡片 -->
             <div class="content-box">
                 
+                <h2 class="box-title">Chinese and English ASR</h2>
+                
+                <div class="scrollable-table-container">
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Input</th>
+                                <th>Transcription</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><audio controls src="static/audio/edit/asr_1.wav"></audio></td>
+                                <td>呃很久没有看到看过如此不带价值判断的电影</td>
+                            </tr>
+                            <tr>
+                                <td><audio controls src="static/audio/edit/asr_4.wav"></audio></td>
+                                <td>桃花庄人塔俱乐部是位于杭州市德清县的一个俱乐部</td>
+                            </tr>
+                            <tr>
+                                <td><audio controls src="static/audio/edit/asr_2.wav"></audio></td>
+                                <td>he was excited and at the same time uneasy maybe the girl had already forgotten him</td>
+                            </tr>
+                            <tr>
+                                <td><audio controls src="static/audio/edit/asr_3.wav"></audio></td>
+                                <td>it's true that everything has its destiny but one day that destiny will be realized</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+      </div>
+
+        <div class="acoustic-editing-module">
+            <!-- 这是最外层的白色卡片 -->
+            <div class="content-box">
+                
                 <h2 class="box-title">Dialect Understanding</h2>
                 
                 <div class="scrollable-table-container">
@@ -541,46 +613,20 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><audio controls src=""></audio></td>
-                                <td>I want the voice to sound conversational and relaxed.</td>
+                                <td><audio controls src="static/audio/asr/a1.wav"></audio></td>
+                                <td>[方言-粤语] 你在干什么, 是不是不想聊天。</td>
                             </tr>
                             <tr>
-                                <td><audio controls src=""></audio></td>
-                                <td>I want the voice to sound conversational and relaxed.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                </div>
-            </div>
-
-        </div>
-      </div>
-        
-        <div class="acoustic-editing-module">
-
-            <!-- 这是最外层的白色卡片 -->
-            <div class="content-box">
-                
-                <h2 class="box-title">Speech Emotion Recognition</h2>
-                
-                <div class="scrollable-table-container">
-                    
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Instruction</th>
-                                <th>Transcription</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><audio controls src=""></audio></td>
-                                <td>I want the voice to sound conversational and relaxed.</td>
+                                <td><audio controls src="static/audio/asr/a11.wav"></audio></td>
+                                <td>[方言-上海话] 我们考试还没定下来呢。</td>
                             </tr>
                             <tr>
-                                <td><audio controls src=""></audio></td>
-                                <td>I want the voice to sound conversational and relaxed.</td>
+                                <td><audio controls src="static/audio/asr/a2.wav"></audio></td>
+                                <td>[方言-闽南语] 宝贝, 早点休息, 晚安</td>
+                            </tr>
+                            <tr>
+                                <td><audio controls src="static/audio/asr/a22.wav"></audio></td>
+                                <td>[方言-川渝方言] 我难受的很, 别人都睡了。</td>
                             </tr>
                         </tbody>
                     </table>
@@ -607,18 +653,21 @@
                     <table class="data-table">
                         <thead>
                             <tr>
-                                <th>Input</th>
-                                <th>Transcription</th>
+                                <th>Input Prompt</th>
+                                <th>Target Text</th>
+                                <th>TTS Result</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><audio controls src=""></audio></td>
-                                <td>I want the voice to sound conversational and relaxed.</td>
+                                <td><audio controls src="static/audio/tts/a3.wav"></audio></td>
+                                <td>全球每年有超过一百三十五万人，因交通事故而死亡。</td>
+                                <td><audio controls src="static/audio/tts/a4.wav"></audio></td>
                             </tr>
                             <tr>
-                                <td><audio controls src=""></audio></td>
-                                <td>I want the voice to sound conversational and relaxed.</td>
+                                <td><audio controls src="static/audio/tts/a33.wav"></audio></td>
+                                <td>The stained glass offered a hypnotic atmosphere.</td>
+                                <td><audio controls src="static/audio/tts/a44.wav"></audio></td>
                             </tr>
                         </tbody>
                     </table>
@@ -669,6 +718,113 @@
      <div class="main-container">
       <div class="content-box">
         <h2 class="box-title">Instruction-Guided Free-Form Speech Editing</h2>
+          <!-- Semantic Editing - Insert -->
+          <div class="acoustic-editing-module">
+            <div class="content-box">
+                
+                <h2 class="box-title">Semantic Editing - Insert</h2>
+                
+                <div class="scrollable-table-container">
+                    
+                    <table class="data-table">
+                        <thead>
+                              <tr>
+                                  <th>Instruction</th>
+                                  <th>Transcription</th>
+                                  <th>Target Transcription</th>
+                                  <th>Before Edit</th>
+                                  <th>Speechedit Result</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>insert '简直' after the character or word at index 8.</td>
+                                  <td>真是个浪漫的邂逅可以说是英雄救美了</td>
+                                  <td>真是个浪漫的邂逅简直可以说是英雄救美了</td>
+                                  <td><audio controls src="static/audio/edit/insert_1.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/insert_1_1.wav"></audio></td>
+                              </tr>
+                              <tr>
+                                  <td>insert '真正' before the character or word '好'.</td>
+                                  <td>就有道而正焉可谓好学也已</td>
+                                  <td>就有道而正焉可谓真正好学也已</td>
+                                  <td><audio controls src="static/audio/edit/insert_2.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/insert_2_2.wav"></audio></td>
+                              </tr>
+                              <tr>
+                                  <td>insert 'clearly' before the character or word at index 8.</td>
+                                  <td>Its legal status in Trinidad was insufficient to preserve its ecological status.</td>
+                                  <td>Its legal status in Trinidad was insufficient clearly to preserve its ecological status.</td>
+                                  <td><audio controls src="static/audio/edit/ins_en1.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/ins_en1_1.wav"></audio></td>
+                              </tr>
+                              <tr>
+                                  <td>insert 'successfully' after the character or word 'profession'.</td>
+                                  <td>Previously an attorney Korona left the profession to pursue a career in music.</td>
+                                  <td>Previously an attorney Korona left the profession successfully to pursue a career in music.</td>
+                                  <td><audio controls src="static/audio/edit/ins_en2.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/ins_en2_2.wav"></audio></td>
+                              </tr>
+                          </tbody>
+                    </table>
+                </div>
+            </div>
+          </div>
+        </div>
+
+          <!-- Semantic Editing - Substitute -->
+          <div class="acoustic-editing-module">
+            <div class="content-box">
+                
+                <h2 class="box-title">Semantic Editing - Substitute</h2>
+                
+                <div class="scrollable-table-container">
+                    
+                    <table class="data-table">
+                        <thead>
+                              <tr>
+                                  <th>Instruction</th>
+                                  <th>Transcription</th>
+                                  <th>Target Transcription</th>
+                                  <th>Before Edit</th>
+                                  <th>Speechedit Result</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>substitute '妈妈' with '爸爸'.</td>
+                                  <td>我想对于妈妈来说会比任何礼物都要温暖</td>
+                                  <td>我想对于爸爸来说会比任何礼物都要温暖</td>
+                                  <td><audio controls src="static/audio/edit/sub3.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/sub3_3.wav"></audio></td>
+                              </tr>
+                              <tr>
+                                  <td>substitute the characters or words from index 8 to index 10 with '五万元'.</td>
+                                  <td>当时我想等筹齐两万元聘礼就送她妈回家</td>
+                                  <td>当时我想等筹齐五万元聘礼就送她妈回家</td>
+                                  <td><audio controls src="static/audio/edit/sub_2.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/sub_2_2.wav"></audio></td>
+                              </tr>
+                              <tr>
+                                  <td>substitute 'get pictures off' with 'transfer photos from'.</td>
+                                  <td>I'm trying to explain to my mother how to get pictures off her phone.</td>
+                                  <td>I'm trying to explain to my mother how to transfer photos from her phone.</td>
+                                  <td><audio controls src="static/audio/edit/sub_en1.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/sub_en1_1.wav"></audio></td>
+                              </tr>
+                              <tr>
+                                  <td>substitute the words from index 8 to index 9 with 'could become'.</td>
+                                  <td>Considering the growth of human population insects might be the food of the future.</td>
+                                  <td>Considering the growth of human population insects could become the food of the future.</td>
+                                  <td><audio controls src="static/audio/edit/sub_en2.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/sub_en2_2.wav"></audio></td>
+                              </tr>
+                          </tbody>
+                    </table>
+                </div>
+            </div>
+          </div>
+
           <!-- Semantic Editing - Delete -->
           <div class="acoustic-editing-module">
               <!-- 这是最外层的白色卡片 -->
@@ -700,90 +856,25 @@
                                   <td><audio controls src="static/audio/edit/delete_2.wav"></audio></td>
                                   <td><audio controls src="static/audio/edit/delete_2_2.wav"></audio></td>
                               </tr>
+                              <tr>
+                                  <td>delete 'times'.</td>
+                                  <td>The classification of this gibbon has changed several times in the past few years.</td>
+                                  <td>The classification of this gibbon has changed several in the past few years.</td>
+                                  <td><audio controls src="static/audio/edit/del_en1.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/del_en1_1.wav"></audio></td>
+                              </tr>
+                              <tr>
+                                  <td>delete the characters or words from index 2 to index 6.</td>
+                                  <td>On the second day the boy climbed to the top of a cliff near the camp</td>
+                                  <td>On climbed to the top of a cliff near the camp</td>
+                                  <td><audio controls src="static/audio/edit/del_en2.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/del_en2_2.wav"></audio></td>
+                              </tr>
                           </tbody>
                       </table>
                   </div>
               </div>
 
-          </div>
-        </div>
-
-          <!-- Semantic Editing - Insert -->
-          <div class="acoustic-editing-module">
-            <div class="content-box">
-                
-                <h2 class="box-title">Semantic Editing - Insert</h2>
-                
-                <div class="scrollable-table-container">
-                    
-                    <table class="data-table">
-                        <thead>
-                              <tr>
-                                  <th>Instruction</th>
-                                  <th>Transcription</th>
-                                  <th>Target Transcription</th>
-                                  <th>Before Edit</th>
-                                  <th>Speechedit Result</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              <tr>
-                                  <td>insert '简直' after the character or word at index 8.</td>
-                                  <td>真是个浪漫的邂逅可以说是英雄救美了</td>
-                                  <td>真是个浪漫的邂逅简直可以说是英雄救美了</td>
-                                  <td><audio controls src="static/audio/edit/insert_1.wav"></audio></td>
-                                  <td><audio controls src="static/audio/edit/insert_1_1.wav"></audio></td>
-                              </tr>
-                              <tr>
-                                  <td>insert '真正' before the character or word '好'</td>
-                                  <td>就有道而正焉可谓好学也已</td>
-                                  <td>就有道而正焉可谓真正好学也已</td>
-                                  <td><audio controls src="static/audio/edit/insert_2.wav"></audio></td>
-                                  <td><audio controls src="static/audio/edit/insert_2_2.wav"></audio></td>
-                              </tr>
-                          </tbody>
-                    </table>
-                </div>
-            </div>
-          </div>
-
-          <!-- Semantic Editing - Substitute -->
-          <div class="acoustic-editing-module">
-            <div class="content-box">
-                
-                <h2 class="box-title">Semantic Editing - Substitute</h2>
-                
-                <div class="scrollable-table-container">
-                    
-                    <table class="data-table">
-                        <thead>
-                              <tr>
-                                  <th>Instruction</th>
-                                  <th>Transcription</th>
-                                  <th>Target Transcription</th>
-                                  <th>Before Edit</th>
-                                  <th>Speechedit Result</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              <tr>
-                                  <td>substitute '现实' with '理想'.</td>
-                                  <td>现难以成为完善个人账户的现实选项</td>
-                                  <td>现难以成为完善个人账户的理想选项</td>
-                                  <td><audio controls src="static/audio/edit/sub_1.wav"></audio></td>
-                                  <td><audio controls src="static/audio/edit/sub_1_1.wav"></audio></td>
-                              </tr>
-                              <tr>
-                                  <td>substitute the characters or words from index 8 to index 10 with '五万元'.</td>
-                                  <td>当时我想等筹齐两万元聘礼就送她妈回家</td>
-                                  <td>当时我想等筹齐五万元聘礼就送她妈回家</td>
-                                  <td><audio controls src="static/audio/edit/sub_2.wav"></audio></td>
-                                  <td><audio controls src="static/audio/edit/sub_2_2.wav"></audio></td>
-                              </tr>
-                          </tbody>
-                    </table>
-                </div>
-            </div>
           </div>
 
           <!-- Acoustic Editing - Speed -->
@@ -799,25 +890,34 @@
                               <tr>
                                   <th>Instruction</th>
                                   <th>Transcription</th>
-                                  <th>Target Transcription</th>
                                   <th>Before Edit</th>
                                   <th>Speechedit Result</th>
                               </tr>
                           </thead>
                           <tbody>
                               <tr>
-                                  <td>substitute '现实' with '理想'.</td>
-                                  <td>现难以成为完善个人账户的现实选项</td>
-                                  <td>现难以成为完善个人账户的理想选项</td>
-                                  <td><audio controls src="static/audio/edit/sub_1.wav"></audio></td>
-                                  <td><audio controls src="static/audio/edit/sub_1_1.wav"></audio></td>
+                                  <td>adjusts the speed to 0.5.</td>
+                                  <td>我用胸抵住车把，掌握方向，速度一点也不比别人慢。</td>
+                                  <td><audio controls src="static/audio/edit/sp1.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/sp11.wav"></audio></td>
                               </tr>
                               <tr>
-                                  <td>substitute the characters or words from index 8 to index 10 with '五万元'.</td>
-                                  <td>当时我想等筹齐两万元聘礼就送她妈回家</td>
-                                  <td>当时我想等筹齐五万元聘礼就送她妈回家</td>
-                                  <td><audio controls src="static/audio/edit/sub_2.wav"></audio></td>
-                                  <td><audio controls src="static/audio/edit/sub_2_2.wav"></audio></td>
+                                  <td>adjusts the speed to 0.7.</td>
+                                  <td>There is a growing body of case law on Bayh-Dole.</td>
+                                  <td><audio controls src="static/audio/edit/sp4.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/sp44.wav"></audio></td>
+                              </tr>
+                              <tr>
+                                  <td>adjusts the speed to 1.3.</td>
+                                  <td>Cribb was born near Bristol but moved to London before starting professional fighting.</td>
+                                  <td><audio controls src="static/audio/edit/sp3.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/sp33.wav"></audio></td>
+                              </tr>
+                              <tr>
+                                  <td>adjusts the speed to 2.</td>
+                                  <td>切实帮助困难群众解决生产生活中，遇到的困难和问题。</td>
+                                  <td><audio controls src="static/audio/edit/sp2.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/sp22.wav"></audio></td>
                               </tr>
                           </tbody>
                     </table>
@@ -838,25 +938,34 @@
                               <tr>
                                   <th>Instruction</th>
                                   <th>Transcription</th>
-                                  <th>Target Transcription</th>
                                   <th>Before Edit</th>
                                   <th>Speechedit Result</th>
                               </tr>
                           </thead>
                           <tbody>
                               <tr>
-                                  <td>substitute '现实' with '理想'.</td>
-                                  <td>现难以成为完善个人账户的现实选项</td>
-                                  <td>现难以成为完善个人账户的理想选项</td>
-                                  <td><audio controls src="static/audio/edit/sub_1.wav"></audio></td>
-                                  <td><audio controls src="static/audio/edit/sub_1_1.wav"></audio></td>
+                                  <td>shifts the pitch by 3 steps.</td>
+                                  <td>因为外面有战争，家里又有战争带来的悲伤和匮乏。</td>
+                                  <td><audio controls src="static/audio/edit/pt1.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/pt11.wav"></audio></td>
                               </tr>
                               <tr>
-                                  <td>substitute the characters or words from index 8 to index 10 with '五万元'.</td>
-                                  <td>当时我想等筹齐两万元聘礼就送她妈回家</td>
-                                  <td>当时我想等筹齐五万元聘礼就送她妈回家</td>
-                                  <td><audio controls src="static/audio/edit/sub_2.wav"></audio></td>
-                                  <td><audio controls src="static/audio/edit/sub_2_2.wav"></audio></td>
+                                  <td>shifts the pitch by 5 steps.</td>
+                                  <td>自动驾驶将大幅提升出行安全，效率。</td>
+                                  <td><audio controls src="static/audio/edit/pt2.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/pt22.wav"></audio></td>
+                              </tr>
+                              <tr>
+                                  <td>shifts the pitch by -1 steps.</td>
+                                  <td>The heart of the campus has a number of historic buildings.</td>
+                                  <td><audio controls src="static/audio/edit/pt3.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/pt33.wav"></audio></td>
+                              </tr>
+                              <tr>
+                                  <td>shifts the pitch by -1 steps.</td>
+                                  <td>Stevenson is also the director of music ministries at Angeles Mesa Presbyterian Church.</td>
+                                  <td><audio controls src="static/audio/edit/pt4.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/pt44.wav"></audio></td>
                               </tr>
                           </tbody>
                     </table>
@@ -877,25 +986,34 @@
                               <tr>
                                   <th>Instruction</th>
                                   <th>Transcription</th>
-                                  <th>Target Transcription</th>
                                   <th>Before Edit</th>
                                   <th>Speechedit Result</th>
                               </tr>
                           </thead>
                           <tbody>
                               <tr>
-                                  <td>substitute '现实' with '理想'.</td>
-                                  <td>现难以成为完善个人账户的现实选项</td>
-                                  <td>现难以成为完善个人账户的理想选项</td>
-                                  <td><audio controls src="static/audio/edit/sub_1.wav"></audio></td>
-                                  <td><audio controls src="static/audio/edit/sub_1_1.wav"></audio></td>
+                                  <td>adjusts the volume to 1.4.</td>
+                                  <td>A woman sits as she shows the designs she has made in the floor.</td>
+                                  <td><audio controls src="static/audio/edit/vol1.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/vol11.wav"></audio></td>
                               </tr>
                               <tr>
-                                  <td>substitute the characters or words from index 8 to index 10 with '五万元'.</td>
-                                  <td>当时我想等筹齐两万元聘礼就送她妈回家</td>
-                                  <td>当时我想等筹齐五万元聘礼就送她妈回家</td>
-                                  <td><audio controls src="static/audio/edit/sub_2.wav"></audio></td>
-                                  <td><audio controls src="static/audio/edit/sub_2_2.wav"></audio></td>
+                                  <td>adjusts the volume to 1.6.</td>
+                                  <td>For example, they both consist of predominately older, hence redder, stars.</td>
+                                  <td><audio controls src="static/audio/edit/vol2.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/vol22.wav"></audio></td>
+                              </tr>
+                              <tr>
+                                  <td>adjusts the volume to 0.9.</td>
+                                  <td>伏羲的儿孙们看见伏羲捉来了鱼，也都欢欢喜喜跑来问长问短。</td>
+                                  <td><audio controls src="static/audio/edit/vol3.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/vol33.wav"></audio></td>
+                              </tr>
+                              <tr>
+                                  <td>adjusts the volume to 0.3.</td>
+                                  <td>他们还告诉巨人，那座城市里群英荟萃。</td>
+                                  <td><audio controls src="static/audio/edit/vol4.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/vol44.wav"></audio></td>
                               </tr>
                           </tbody>
                     </table>
@@ -903,15 +1021,213 @@
             </div>
           </div>
 
+          <!-- Acoustic Editing - Denoise -->
+          <div class="acoustic-editing-module">
+            <div class="content-box">
+                
+                <h2 class="box-title">Acoustic Editing - Denoise</h2>
+                
+                <div class="scrollable-table-container">
+                    
+                    <table class="data-table">
+                        <thead>
+                              <tr>
+                                  <th>Instruction</th>
+                                  <th>Transcription</th>
+                                  <th>Before Edit</th>
+                                  <th>Speechedit Result</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>denoise the audio.</td>
+                                  <td>Be shape of example,before deriving this formula we explained what we mean by problems of this kind we now generalize these ideas for general binomial experiments.</td>
+                                  <td><audio controls src="static/audio/edit/den1.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/den11.wav"></audio></td>
+                              </tr>
+                              <tr>
+                                  <td>denoise the audio.</td>
+                                  <td>Summoned to himself with firmness no surrender his superiors had also preached this saying it was the way of eternal honor his comrades were old.</td>
+                                  <td><audio controls src="static/audio/edit/den2.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/den22.wav"></audio></td>
+                              </tr>
+                              <tr>
+                                  <td>denoise the audio.</td>
+                                  <td>There are people who travel long distances to assure my continued existence we have also seen the power of faith at work among us it was muscular but it wasn't symmetrical.</td>
+                                  <td><audio controls src="static/audio/edit/den3.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/den33.wav"></audio></td>
+                              </tr>
+                              <tr>
+                                  <td>denoise the audio.</td>
+                                  <td>Theory eventually proved inexact the heavens refused to give up their weeping but what has been happening recently might be described as creeping mannerism clever.</td>
+                                  <td><audio controls src="static/audio/edit/den4.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/den44.wav"></audio></td>
+                              </tr>
+                          </tbody>
+                    </table>
+                </div>
+            </div>
+          </div>
+
+          <!-- Acoustic Editing - Bgm -->
+          <div class="acoustic-editing-module">
+            <div class="content-box">
+                
+                <h2 class="box-title">Acoustic Editing - Background Music</h2>
+                
+                <div class="scrollable-table-container">
+                    
+                    <table class="data-table">
+                        <thead>
+                              <tr>
+                                  <th>Instruction</th>
+                                  <th>Before Edit</th>
+                                  <th>Speechedit Result</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>add rain to audio.</td>
+                                  <td><audio controls src="static/audio/edit/bgm1.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/bgm1_1.wav"></audio></td>
+                              </tr>
+                              <tr>
+                                  <td>add car sound to audio.</td>
+                                  <td><audio controls src="static/audio/edit/bgm2.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/bgm2_2.wav"></audio></td>
+                              </tr>
+                              <tr>
+                                  <td>add carefree music to audio.</td>
+                                  <td><audio controls src="static/audio/edit/bgm3.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/bgm3_3.wav"></audio></td>
+                              </tr>
+                              <tr>
+                                  <td>add groovy music to audio.</td>
+                                  <td><audio controls src="static/audio/edit/bgm4.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/bgm4_4.wav"></audio></td>
+                              </tr>
+                          </tbody>
+                    </table>
+                </div>
+            </div>
+          </div>
+
+          <!-- Acoustic Editing - Emotion -->
+          <div class="acoustic-editing-module">
+            <div class="content-box">
+                
+                <h2 class="box-title">Acoustic Editing - Emotion Conversion</h2>
+                
+                <div class="scrollable-table-container">
+                    
+                    <table class="data-table">
+                        <thead>
+                              <tr>
+                                  <th>Instruction</th>
+                                  <th>Transcription</th>
+                                  <th>Before Edit</th>
+                                  <th>Speechedit Result</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>change the emotion to happy mood.</td>
+                                  <td></td>
+                                  <td><audio controls src="static/audio/edit/emo1.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/emo1_1.wav"></audio></td>
+                              </tr>
+                              <tr>
+                                  <td>change the emotion to happy mood.</td>
+                                  <td></td>
+                                  <td><audio controls src="static/audio/edit/emo2.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/emo2_2.wav"></audio></td>
+                              </tr>
+                              <tr>
+                                  <td>change the emotion to happy mood.</td>
+                                  <td></td>
+                                  <td><audio controls src="static/audio/edit/emo3.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/emo3_3.wav"></audio></td>
+                              </tr>
+                              <tr>
+                                  <td>change the emotion to happy mood.</td>
+                                  <td></td>
+                                  <td><audio controls src="static/audio/edit/emo4.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/emo4_4.wav"></audio></td>
+                              </tr>
+                          </tbody>
+                    </table>
+                </div>
+            </div>
+          </div>
+
+          <!-- Acoustic Editing - fangyan -->
+          <div class="acoustic-editing-module">
+            <div class="content-box">
+                
+                <h2 class="box-title">Acoustic Editing - Dialect Conversion</h2>
+                
+                <div class="scrollable-table-container">
+                    
+                    <table class="data-table">
+                        <thead>
+                              <tr>
+                                  <th>Instruction</th>
+                                  <th>Transcription</th>
+                                  <th>Before Edit</th>
+                                  <th>Speechedit Result</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>Change the accent of the speech to Dongbei.</td>
+                                  <td>之后，他考取导游证，成为拱北口岸中旅的导游。</td>
+                                  <td><audio controls src="static/audio/edit/fy1.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/fy1_1.wav"></audio></td>
+                              </tr>
+                              <tr>
+                                  <td>Change the accent of the speech to Chengdu.</td>
+                                  <td>只有当科技为本地社群创造价值的时候，才真正有意义。</td>
+                                  <td><audio controls src="static/audio/edit/fy2.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/fy2_2.wav"></audio></td>
+                              </tr>
+                              <tr>
+                                  <td>Change the accent of the speech to Chengdu.</td>
+                                  <td>我得用回想与幻想补充我所缺少的饮食，安慰我所得到的痛苦。</td>
+                                  <td><audio controls src="static/audio/edit/fy3.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/fy3_3.wav"></audio></td>
+                              </tr>
+                              <tr>
+                                  <td>Change the accent of the speech to Guangxi.</td>
+                                  <td>全国恶性肿瘤发病，及死亡第一位的是肺癌。</td>
+                                  <td><audio controls src="static/audio/edit/fy4.wav"></audio></td>
+                                  <td><audio controls src="static/audio/edit/fy4_4.wav"></audio></td>
+                              </tr>
+                          </tbody>
+                    </table>
+                </div>
+            </div>
+          </div>
+
+          <div class="acoustic-editing-module">
+              <!-- 这是最外层的白色卡片 -->
+              <div class="content-box">
+                  <h2 class="box-title">Acoustic Editing - Dialect Conversion from 剪映</h2>
+                  <video src="static/audio/jianying-dynamic-v3.mov" controls width="600">
+                      您的浏览器不支持 video 标签。
+                  </video>
+              </div>
+          </div>
+
+
     </div>
 
 
 
 
-
+<div class="main-container2">
   <!--BibTex citation -->
   <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
+    <!-- <div class="container is-max-desktop content"> -->
       <h2 class="title">Reference</h2>
       <pre>
       <code>
@@ -929,9 +1245,9 @@
 }
 </code>
 </pre>
-    </div>
+    <!-- </div> -->
   </section>
-
+</div>
 
 
 
