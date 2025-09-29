@@ -152,6 +152,54 @@
         width: 250px;
     }
 
+    /* 标题样式（保持不变） */
+.box-title {
+    /* (可以添加一些样式，比如让标题居中或增加底部边距) */
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+/* 视频容器的核心样式 (修正版) */
+.video-container {
+    /* 1. 开启 Flexbox 布局 */
+    display: flex;
+
+    /* 2. 让两个视频水平排列，并在它们之间留出空隙 */
+    justify-content: space-between; /* 或者使用 space-around */
+    
+    /* 3. 设置视频之间的间距 */
+    gap: 24px;
+}
+
+/* 视频元素的样式 (修正版) */
+.video-container video {
+    /* 4. 这是关键：精确计算每个视频的宽度 */
+    /* 计算公式：(100% 宽度 - 间距) / 视频数量 */
+    /* 在这里是 (100% - 24px) / 2 */
+    width: calc(50% - 12px);
+
+    /* 5. 高度自适应，保持视频原始宽高比 */
+    height: auto;
+
+    /* 6. (可选) 美化样式：添加圆角，与外部卡片风格统一 */
+    border-radius: 6px;
+}
+
+/* 响应式布局：在小屏幕上垂直堆叠 */
+@media (max-width: 768px) {
+    .video-container {
+        /* 将排列方向改为垂直 */
+        flex-direction: column;
+        /* 在垂直方向上对齐项目 */
+        align-items: center;
+    }
+
+    .video-container video {
+        /* 在小屏幕上，让每个视频宽度为80%或100%，使其更易于观看 */
+        width: 90%; 
+    }
+}
+
 </style>
 <body>
 
@@ -235,14 +283,14 @@
 
 
                 <span class="link-block">
-                    <a href="https://huggingface.co/inclusionAI/Ming-Lite-Omni" target="_blank" class="external-link button is-normal is-rounded is-white">
+                    <a href="https://huggingface.co/inclusionAI/Ming-UniAudio-Tokenizer" target="_blank" class="external-link button is-normal is-rounded is-white">
                         <span class="icon">🤗</span>
                         <span>Hugging Face</span>
                     </a>
                 </span>
 
                 <span class="link-block">
-                    <a href="https://www.modelscope.cn/models/inclusionAI/Ming-Lite-Omni" target="_blank" class="external-link button is-normal is-rounded is-white">
+                    <a href="https://modelscope.cn/models/inclusionAI/Ming-UniAudio-Tokenizer" target="_blank" class="external-link button is-normal is-rounded is-white">
                         <span class="icon">🤖</span>
                         <span>ModelScope</span>
                     </a>
@@ -261,6 +309,15 @@
       </div>
     </div>
   </section>
+
+<div class="main-container">
+    <h2 class="box-title">Editing Tasks Video demos</h2>
+
+    <div class="video-container">
+        <video src="static/audio/jianying-dynamic-v3.mov" controls></video>
+        <video src="static/audio/demo2.mp4" controls></video>
+    </div>
+</div>
 
 <div class="main-container2">
   <!-- Teaser image-->
@@ -353,236 +410,8 @@
   <!-- End image carousel -->
 </div>
 
-    <!-- ASR -->
-     <div class="main-container">
-      <div class="content-box">
-        <h2 class="box-title">Audio Understanding</h2>
-        <div class="acoustic-editing-module">
-            <!-- 这是最外层的白色卡片 -->
-            <div class="content-box">
-                
-                <h2 class="box-title">Chinese and English ASR</h2>
-                
-                <div class="scrollable-table-container">
-                    
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Input</th>
-                                <th>Transcription</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><audio controls src="static/audio/edit/asr_1.wav"></audio></td>
-                                <td>呃很久没有看到看过如此不带价值判断的电影</td>
-                            </tr>
-                            <tr>
-                                <td><audio controls src="static/audio/edit/asr_4.wav"></audio></td>
-                                <td>桃花庄人塔俱乐部是位于杭州市德清县的一个俱乐部</td>
-                            </tr>
-                            <tr>
-                                <td><audio controls src="static/audio/edit/asr_2.wav"></audio></td>
-                                <td>he was excited and at the same time uneasy maybe the girl had already forgotten him</td>
-                            </tr>
-                            <tr>
-                                <td><audio controls src="static/audio/edit/asr_3.wav"></audio></td>
-                                <td>it's true that everything has its destiny but one day that destiny will be realized</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                </div>
-            </div>
-
-        </div>
-      </div>
-        
-        <!-- Dialect Understanding -->
-        <div class="acoustic-editing-module">
-            <!-- 这是最外层的白色卡片 -->
-            <div class="content-box">
-                
-                <h2 class="box-title">Dialect Understanding</h2>
-                
-                <div class="scrollable-table-container">
-                    
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Input</th>
-                                <th>Transcription</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><audio controls src="static/audio/asr/a1.wav"></audio></td>
-                                <td>[方言-粤语] 你在干什么, 是不是不想聊天。</td>
-                            </tr>
-                            <tr>
-                                <td><audio controls src="static/audio/asr/a11.wav"></audio></td>
-                                <td>[方言-上海话] 我们考试还没定下来呢。</td>
-                            </tr>
-                            <tr>
-                                <td><audio controls src="static/audio/asr/a2.wav"></audio></td>
-                                <td>[方言-闽南语] 宝贝, 早点休息, 晚安</td>
-                            </tr>
-                            <tr>
-                                <td><audio controls src="static/audio/asr/a22.wav"></audio></td>
-                                <td>[方言-川渝方言] 我难受的很, 别人都睡了。</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Context ASR -->
-        <div class="acoustic-editing-module">
-            <!-- 这是最外层的白色卡片 -->
-            <div class="content-box">
-                
-                <h2 class="box-title">Context ASR</h2>
-                
-                <div class="scrollable-table-container">
-                    
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Input</th>
-                                <th>Prompt</th>
-                                <th>Transcription</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><audio controls src="static/audio/asr/casr1.wav"></audio></td>
-                                <td>Please recognize the language of this speech and transcribe it. Format: oral. This is an audio about Banking. This audio may contains the following words or phrases:Zelle,daily A C H transfer limit,cashier's checks,transaction memos,F D I C regulations,cryptocurrency wallet,K Y C requirements.</td>
-                                <td>hey chris you won't believe what happened when i tried sending rent through zelle yesterday hit some daily a c h transfer limit my landlord's insisting on cashier's checks now remember how sarah's venmo payment got flagged last month the bank's fraud detection system kept asking about transaction memos and source of funds verification honestly these f d i c regulations around peer to peer payments are getting ridiculous i had to provide three months of bank statements just to increase my wire transfer threshold oh and don't even get me started on cryptocurrency wallet k y c requirements.</td>
-                            </tr>
-                            <tr>
-                                <td><audio controls src="static/audio/asr/casr2.wav"></audio></td>
-                                <td>Please recognize the language of this speech and transcribe it. Format: oral. This is an audio about Banking. This audio may contains the following words or phrases:Priority Pass lounges,T S A Pre Check,rewards structure,bonus miles,Citibank's Prestige Card,Visa Infinite,E M V chip security protocols,dynamic currency conversion.</td>
-                                <td>so listen i finally canceled my chase sapphire reserve last week remember how they touted those priority pass lounges and luxury hotel collection benefits turns out i only used the t s a pre check credit once this whole year the annual fee jumped to five hundred fifty dollars plus they started requiring eighteen thousand points to waive it my amex platinum isn't any better that seven hundred dollar fee just hit and their new rewards structure requires thirty thousand in annual spending for bonus miles oh and get this citibank's prestige card now charges two hundred bucks for authorized users honestly these visa infinite perks like concierge services and purchase protection sound fancy but when do regular people actually use e m v chip security protocols or dynamic currency conversion.</td>
-                            </tr>
-                            <tr>
-                                <td><audio controls src="static/audio/asr/casr3.wav"></audio></td>
-                                <td>Please recognize the language of this speech and transcribe it. Format: oral. This is an audio about 酒店常旅客计划. This audio may contains the following words or phrases:至悦大使,重庆来福士洲际,酒廊待遇,万豪旅享家,钛金会员.</td>
-                                <td>小李我最近在研究ihg的会员体系这个至悦大使的达标条件也太苛刻了吧三百权益里洲际的认可房晚才给三十晚你说他们家的先行者任务算不算里程碑奖励啊对了我之前用积分兑换重庆来福士洲际的行政套房礼宾部居然没给酒廊待遇反而现金订房的客人能拿到双早万豪旅享家的钛金会员都能自动匹配套房升级券ihg这个动态定价系统真是让人头大</td>
-                            </tr>
-                            <tr>
-                                <td><audio controls src="static/audio/asr/casr4.wav"></audio></td>
-                                <td>Please recognize the language of this speech and transcribe it. Format: oral. This is an audio about 汽车行业. This audio may contains the following words or phrases:汽车之家曹雷,矩阵式 L E D 大灯,四十八伏轻混系统,可变气门升程技术,M B U X 超联屏,Sportback,Allroad.</td>
-                                <td>嘿老李你看到汽车之家曹雷发的文章没说新款奥迪a三加长到四米六了昨儿我去四s店试驾销售说这车配了啥矩阵式l e d大灯还有四十八伏轻混系统不过宝马一系那个b四十八发动机改装了可变气门升程技术奔驰a级更夸张直接把m b u x超联屏塞进紧凑车里要我说啊现在车企搞细分市场真够拼的听说奥迪还要出sportback allroad四个版本呢连自适应巡航都标配了</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                </div>
-            </div>
-
-        </div>
-
-     </div>
-
-     <!-- TTS -->
-     <div class="main-container">
-      <div class="content-box">
-        <h2 class="box-title">Audio Generation</h2>
-        <div class="acoustic-editing-module">
-            <!-- 这是最外层的白色卡片 -->
-            <div class="content-box">
-                
-                <h2 class="box-title">Voice Clone</h2>
-                
-                <div class="scrollable-table-container">
-                    
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Input Prompt</th>
-                                <th>Target Text</th>
-                                <th>TTS Result</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><audio controls src="static/audio/tts/a3.wav"></audio></td>
-                                <td>全球每年有超过一百三十五万人，因交通事故而死亡。</td>
-                                <td><audio controls src="static/audio/tts/a4.wav"></audio></td>
-                            </tr>
-                            <tr>
-                                <td><audio controls src="static/audio/tts/a33.wav"></audio></td>
-                                <td>The stained glass offered a hypnotic atmosphere.</td>
-                                <td><audio controls src="static/audio/tts/a44.wav"></audio></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                </div>
-            </div>
-
-        </div>
-      </div>
-        
-        <div class="acoustic-editing-module">
-
-            <!-- 这是最外层的白色卡片 -->
-            <div class="content-box">
-                
-                <h2 class="box-title">Multi-lingual Synthesis</h2>
-                
-                <div class="scrollable-table-container">
-                    
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Input Prompt Text</th>
-                                <th>Input Prompt audio</th>
-                                <th>Target Text</th>
-                                <th>TTS Result</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>We asked over twenty different people, and they all said it was his.</td>
-                                <td><audio controls src="static/audio/tts/tts1.wav"></audio></td>
-                                <td>he stained glass offered a hypnotic atmosphere.</td>
-                                <td><audio controls src="static/audio/tts/tts11.wav"></audio></td>
-                            </tr>
-                            <tr>
-                                <td>The wedding was photographed by celebrity wedding photographer Kid Chan.</td>
-                                <td><audio controls src="static/audio/tts/tts1.wav"></audio></td>
-                                <td>In terms of its natural environment, Lleida offers a wide variety of landscapes.</td>
-                                <td><audio controls src="static/audio/tts/tts11.wav"></audio></td>
-                            </tr>
-                            <tr>
-                                <td>关于不少万达广场的注册资本金更改。</td>
-                                <td><audio controls src="static/audio/tts/tts1.wav"></audio></td>
-                                <td>哎，这些情况在北京这样的大都市，是无法避免的。</td>
-                                <td><audio controls src="static/audio/tts/tts11.wav"></audio></td>
-                            </tr>
-                            <tr>
-                                <td>长春周二之前晴天多云五月七日是晴天。</td>
-                                <td><audio controls src="static/audio/tts/tts1.wav"></audio></td>
-                                <td>两人一直对婚变封口，使传闻闹得热烘烘。</td>
-                                <td><audio controls src="static/audio/tts/tts11.wav"></audio></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                </div>
-            </div>
-
-        </div>
-
-     </div>
-
-
-     <!-- Edit -->
-     <div class="main-container">
+    <!-- Edit -->
+    <div class="main-container">
       <div class="content-box">
         <h2 class="box-title">Instruction-Guided Free-Form Speech Editing</h2>
           <!-- Semantic Editing - Insert -->
@@ -1075,21 +904,234 @@
             </div>
           </div>
 
-          <div class="acoustic-editing-module">
-              <!-- 这是最外层的白色卡片 -->
-              <div class="content-box">
-                  <h2 class="box-title">Acoustic Editing - Dialect Conversion from 剪映</h2>
-                  <video src="static/audio/jianying-dynamic-v3.mov" controls width="600">
-                      您的浏览器不支持 video 标签。
-                  </video>
-              </div>
-          </div>
-
-
     </div>
 
+    <!-- ASR -->
+     <div class="main-container">
+      <div class="content-box">
+        <h2 class="box-title">Audio Understanding</h2>
+        <div class="acoustic-editing-module">
+            <!-- 这是最外层的白色卡片 -->
+            <div class="content-box">
+                
+                <h2 class="box-title">Chinese and English ASR</h2>
+                
+                <div class="scrollable-table-container">
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Input</th>
+                                <th>Transcription</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><audio controls src="static/audio/edit/asr_1.wav"></audio></td>
+                                <td>呃很久没有看到看过如此不带价值判断的电影</td>
+                            </tr>
+                            <tr>
+                                <td><audio controls src="static/audio/edit/asr_4.wav"></audio></td>
+                                <td>桃花庄人塔俱乐部是位于杭州市德清县的一个俱乐部</td>
+                            </tr>
+                            <tr>
+                                <td><audio controls src="static/audio/edit/asr_2.wav"></audio></td>
+                                <td>he was excited and at the same time uneasy maybe the girl had already forgotten him</td>
+                            </tr>
+                            <tr>
+                                <td><audio controls src="static/audio/edit/asr_3.wav"></audio></td>
+                                <td>it's true that everything has its destiny but one day that destiny will be realized</td>
+                            </tr>
+                        </tbody>
+                    </table>
 
+                </div>
+            </div>
 
+        </div>
+      </div>
+        
+        <!-- Dialect Understanding -->
+        <div class="acoustic-editing-module">
+            <!-- 这是最外层的白色卡片 -->
+            <div class="content-box">
+                
+                <h2 class="box-title">Dialect Understanding</h2>
+                
+                <div class="scrollable-table-container">
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Input</th>
+                                <th>Transcription</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><audio controls src="static/audio/asr/a1.wav"></audio></td>
+                                <td>[方言-粤语] 你在干什么, 是不是不想聊天。</td>
+                            </tr>
+                            <tr>
+                                <td><audio controls src="static/audio/asr/a11.wav"></audio></td>
+                                <td>[方言-上海话] 我们考试还没定下来呢。</td>
+                            </tr>
+                            <tr>
+                                <td><audio controls src="static/audio/asr/a2.wav"></audio></td>
+                                <td>[方言-闽南语] 宝贝, 早点休息, 晚安</td>
+                            </tr>
+                            <tr>
+                                <td><audio controls src="static/audio/asr/a22.wav"></audio></td>
+                                <td>[方言-川渝方言] 我难受的很, 别人都睡了。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Context ASR -->
+        <div class="acoustic-editing-module">
+            <!-- 这是最外层的白色卡片 -->
+            <div class="content-box">
+                
+                <h2 class="box-title">Context ASR</h2>
+                
+                <div class="scrollable-table-container">
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Input</th>
+                                <th>Prompt</th>
+                                <th>Transcription</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><audio controls src="static/audio/asr/casr1.wav"></audio></td>
+                                <td>Please recognize the language of this speech and transcribe it. Format: oral. This is an audio about Banking. This audio may contains the following words or phrases:Zelle,daily A C H transfer limit,cashier's checks,transaction memos,F D I C regulations,cryptocurrency wallet,K Y C requirements.</td>
+                                <td>hey chris you won't believe what happened when i tried sending rent through zelle yesterday hit some daily a c h transfer limit my landlord's insisting on cashier's checks now remember how sarah's venmo payment got flagged last month the bank's fraud detection system kept asking about transaction memos and source of funds verification honestly these f d i c regulations around peer to peer payments are getting ridiculous i had to provide three months of bank statements just to increase my wire transfer threshold oh and don't even get me started on cryptocurrency wallet k y c requirements.</td>
+                            </tr>
+                            <tr>
+                                <td><audio controls src="static/audio/asr/casr2.wav"></audio></td>
+                                <td>Please recognize the language of this speech and transcribe it. Format: oral. This is an audio about Banking. This audio may contains the following words or phrases:Priority Pass lounges,T S A Pre Check,rewards structure,bonus miles,Citibank's Prestige Card,Visa Infinite,E M V chip security protocols,dynamic currency conversion.</td>
+                                <td>so listen i finally canceled my chase sapphire reserve last week remember how they touted those priority pass lounges and luxury hotel collection benefits turns out i only used the t s a pre check credit once this whole year the annual fee jumped to five hundred fifty dollars plus they started requiring eighteen thousand points to waive it my amex platinum isn't any better that seven hundred dollar fee just hit and their new rewards structure requires thirty thousand in annual spending for bonus miles oh and get this citibank's prestige card now charges two hundred bucks for authorized users honestly these visa infinite perks like concierge services and purchase protection sound fancy but when do regular people actually use e m v chip security protocols or dynamic currency conversion.</td>
+                            </tr>
+                            <tr>
+                                <td><audio controls src="static/audio/asr/casr3.wav"></audio></td>
+                                <td>Please recognize the language of this speech and transcribe it. Format: oral. This is an audio about 酒店常旅客计划. This audio may contains the following words or phrases:至悦大使,重庆来福士洲际,酒廊待遇,万豪旅享家,钛金会员.</td>
+                                <td>小李我最近在研究ihg的会员体系这个至悦大使的达标条件也太苛刻了吧三百权益里洲际的认可房晚才给三十晚你说他们家的先行者任务算不算里程碑奖励啊对了我之前用积分兑换重庆来福士洲际的行政套房礼宾部居然没给酒廊待遇反而现金订房的客人能拿到双早万豪旅享家的钛金会员都能自动匹配套房升级券ihg这个动态定价系统真是让人头大</td>
+                            </tr>
+                            <tr>
+                                <td><audio controls src="static/audio/asr/casr4.wav"></audio></td>
+                                <td>Please recognize the language of this speech and transcribe it. Format: oral. This is an audio about 汽车行业. This audio may contains the following words or phrases:汽车之家曹雷,矩阵式 L E D 大灯,四十八伏轻混系统,可变气门升程技术,M B U X 超联屏,Sportback,Allroad.</td>
+                                <td>嘿老李你看到汽车之家曹雷发的文章没说新款奥迪a三加长到四米六了昨儿我去四s店试驾销售说这车配了啥矩阵式l e d大灯还有四十八伏轻混系统不过宝马一系那个b四十八发动机改装了可变气门升程技术奔驰a级更夸张直接把m b u x超联屏塞进紧凑车里要我说啊现在车企搞细分市场真够拼的听说奥迪还要出sportback allroad四个版本呢连自适应巡航都标配了</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+
+     </div>
+
+     <!-- TTS -->
+     <div class="main-container">
+      <div class="content-box">
+        <h2 class="box-title">Audio Generation</h2>
+        <div class="acoustic-editing-module">
+            <!-- 这是最外层的白色卡片 -->
+            <div class="content-box">
+                
+                <h2 class="box-title">Voice Clone</h2>
+                
+                <div class="scrollable-table-container">
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Input Prompt</th>
+                                <th>Target Text</th>
+                                <th>TTS Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><audio controls src="static/audio/tts/a3.wav"></audio></td>
+                                <td>全球每年有超过一百三十五万人，因交通事故而死亡。</td>
+                                <td><audio controls src="static/audio/tts/a4.wav"></audio></td>
+                            </tr>
+                            <tr>
+                                <td><audio controls src="static/audio/tts/a33.wav"></audio></td>
+                                <td>The stained glass offered a hypnotic atmosphere.</td>
+                                <td><audio controls src="static/audio/tts/a44.wav"></audio></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+      </div>
+        
+        <div class="acoustic-editing-module">
+
+            <!-- 这是最外层的白色卡片 -->
+            <div class="content-box">
+                
+                <h2 class="box-title">Multi-lingual Synthesis</h2>
+                
+                <div class="scrollable-table-container">
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Input Prompt Text</th>
+                                <th>Input Prompt audio</th>
+                                <th>Target Text</th>
+                                <th>TTS Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>We asked over twenty different people, and they all said it was his.</td>
+                                <td><audio controls src="static/audio/tts/tts1.wav"></audio></td>
+                                <td>he stained glass offered a hypnotic atmosphere.</td>
+                                <td><audio controls src="static/audio/tts/tts11.wav"></audio></td>
+                            </tr>
+                            <tr>
+                                <td>The wedding was photographed by celebrity wedding photographer Kid Chan.</td>
+                                <td><audio controls src="static/audio/tts/tts1.wav"></audio></td>
+                                <td>In terms of its natural environment, Lleida offers a wide variety of landscapes.</td>
+                                <td><audio controls src="static/audio/tts/tts11.wav"></audio></td>
+                            </tr>
+                            <tr>
+                                <td>关于不少万达广场的注册资本金更改。</td>
+                                <td><audio controls src="static/audio/tts/tts1.wav"></audio></td>
+                                <td>哎，这些情况在北京这样的大都市，是无法避免的。</td>
+                                <td><audio controls src="static/audio/tts/tts11.wav"></audio></td>
+                            </tr>
+                            <tr>
+                                <td>长春周二之前晴天多云五月七日是晴天。</td>
+                                <td><audio controls src="static/audio/tts/tts1.wav"></audio></td>
+                                <td>两人一直对婚变封口，使传闻闹得热烘烘。</td>
+                                <td><audio controls src="static/audio/tts/tts11.wav"></audio></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+
+     </div>
 
 <div class="main-container2">
   <!--BibTex citation -->
@@ -1098,16 +1140,16 @@
       <h2 class="title">Reference</h2>
       <pre>
       <code>
+@article{Mingunify2025,
+  title   = {Ming-UniAudio: Unified Representation And Speech Language Model for Joint Speech Understanding, Generation and Editing},
+  author  = {Inclusion AI, Ant Group},
+  journal = {Technical Report, arXiv:2505.02471},
+  year    = {2025}
+}
 @article{Mingomni2025,
   title   = {Ming-Omni: A Unified Multimodal Model for Perception and Generation},
   author  = {Inclusion AI, Ant Group},
   journal = {Technical Report},
-  year    = {2025}
-}
-@article{Mingunify2025,
-  title   = {Ming-Lite-Uni: Advancements in Unified Architecture for Natural Multimodal Interaction},
-  author  = {Inclusion AI, Ant Group},
-  journal = {Technical Report, arXiv:2505.02471},
   year    = {2025}
 }
 </code>
