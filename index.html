@@ -277,7 +277,7 @@
 
                 <!-- Github link -->
                 <span class="link-block">
-                  <a href="https://code.alipay.com/chunxiang.jcx/Ming-Lite-UniAudio/tree/master" target="_blank"
+                  <a href="https://github.com/inclusionAI/Ming-UniAudio" target="_blank"
                     class="external-link button is-normal is-rounded is-white">
                     <span class="icon">
                       <i class="fab fa-github"></i>
@@ -288,14 +288,14 @@
 
 
                 <span class="link-block">
-                    <a href="https://huggingface.co/inclusionAI/Ming-UniAudio-Base" target="_blank" class="external-link button is-normal is-rounded is-white">
+                    <a href="https://huggingface.co/inclusionAI/Ming-UniAudio-16A3B" target="_blank" class="external-link button is-normal is-rounded is-white">
                         <span class="icon">🤗</span>
                         <span>Hugging Face</span>
                     </a>
                 </span>
 
                 <span class="link-block">
-                    <a href="https://modelscope.cn/models/inclusionAI/Ming-UniAudio-Base" target="_blank" class="external-link button is-normal is-rounded is-white">
+                    <a href="https://modelscope.cn/models/inclusionAI/Ming-UniAudio-16A3B" target="_blank" class="external-link button is-normal is-rounded is-white">
                         <span class="icon">🤖</span>
                         <span>ModelScope</span>
                     </a>
@@ -315,19 +315,43 @@
     </div>
   </section>
 
-<!-- <div class="main-container-video"> -->
-<div class="main-container">
-    <h2 class="box-title-vedio">Editing Tasks Video demos</h2>
-
-    <div class="video-container">
-        <video src="static/audio/demo-0929-context-edit-insert.mp4" controls></video>
-        <video src="static/audio/demo-0929-context-edit.mp4" controls></video>
+<!-- Paper abstract -->
+<div class="main-container2">
+<!-- <section class="hero is-light"> -->
+<div class="hero-body">
+    <div class="container is-max-desktop is-centered has-text-centered">
+    <!-- <div class="columns is-centered has-text-centered"> -->
+    <!-- <div class="column is-four-fifths"> -->
+    <h2 class="title is-3">Abstract</h2>
+    <!-- <h2 class="title is-3">Abstract</h2> -->
+    <div class="content has-text-justified">
+        <p>
+        With the rapid advancement of large language models (LLMs), LLM-based speech foundation
+        models have achieved significant improvements in both speech understanding and generation. These
+        advances enable more accurate and fine-grained comprehension of spoken language, as well as more
+        fluent and natural speech output for human-machine interaction. From the perspective of speech
+        representation, most existing speech LLMs either separate the representations for understanding
+        and generation tasks or employ discrete representations for both. The former approach cannot edit
+        speech, while the latter suffers from loss of speech details due to quantization. In terms of speech
+        tasks, there is currently no single model capable of performing semantic and acoustic editing on
+        input speech through free-form instructions. This multiround editing capability has already been
+        well demonstrated in the image domain. To address the issue of inconsistent representations between
+        understanding and generation, we propose a continuous audio tokenizer that unifies both speech
+        understanding and generation tasks. Furthermore, we introduce a novel capability, free-form speech
+        editing, which enables fine-grained and high-fidelity speech manipulation.<br>
+        <strong>- First unified continuous speech tokenizer:</strong> MingTok-Audio is the first continuous audio tokenizer to effectively integrate semantic and acoustic features, suitable for both understanding and generation tasks.<br>
+        <strong>- First universal, free-form speech editing model:</strong> Ming-UniAudio is the first to enable universal, free-form speech editing guided solely by natural language instructions, handling complex semantic and acoustic modifications without manual region specification.<br>
+        <strong>- First benchmark for free-form speech editing:</strong> Ming-Freeform-Audio-Edit is the first benchmark introduced for free-form speech editing with various semantic and acoustic tasks  to evaluate this new capability.
+        </p>
     </div>
-    <div class="video-container">
-        <video src="static/audio/demo-0929-deialect-1.mp4" controls></video>
-        <video src="static/audio/demo-0929-denoise-2.mp4" controls></video>
+    <!-- </div> -->
+    <!-- </div> -->
     </div>
 </div>
+<!-- </section> -->
+</div>
+<!-- End paper abstract -->
+
 
 <div class="main-container2">
   <!-- Teaser image-->
@@ -345,56 +369,6 @@
   <!-- End teaser image -->
 </div>
 
-  <!-- Paper abstract -->
-  <div class="main-container2">
-  <!-- <section class="hero is-light"> -->
-    <div class="hero-body">
-      <div class="container is-max-desktop is-centered has-text-centered">
-        <!-- <div class="columns is-centered has-text-centered"> -->
-        <!-- <div class="column is-four-fifths"> -->
-        <h2 class="title is-3">Abstract</h2>
-        <!-- <h2 class="title is-3">Abstract</h2> -->
-        <div class="content has-text-justified">
-          <p>
-          <!-- We propose Ming-Omni, a unified multimodal model capable of processing images, text, audio, and
-          video, while demonstrating strong proficiency in both speech and image generation. Ming-Omni
-          employs dedicated encoders to extract tokens from different modalities, which are then processed
-          by Ling, an MoE architecture equipped with newly proposed modality-specific routers. This design
-          enables a single model to efficiently process and fuse multimodal inputs within a unified framework,
-          thereby facilitating diverse tasks without requiring separate models, task-specific fine-tuning, or
-          structural redesign. Importantly, Ming-Omni extends beyond conventional multimodal models by
-          supporting audio and image generation. This is achieved through the integration of an advanced
-          audio decoder for natural-sounding speech and Ming-Lite-Uni for high-quality image generation,
-          which also allow the model to engage in context-aware chatting, perform text-to-speech conversion,
-          and conduct versatile image editing. Our experimental results showcase Ming-Omni offers a powerful
-          solution for unified perception and generation across all modalities. Notably, our proposed Ming-Omni
-          is the first open-source model we are aware of to match GPT-4o in modality support, and we
-          release all code and model weights to encourage further research and development in the community. -->
-          With the rapid advancement of large language models (LLMs), LLM-based speech foundation
-          models have achieved significant improvements in both speech understanding and generation. These
-          advances enable more accurate and fine-grained comprehension of spoken language, as well as more
-          fluent and natural speech output for human-machine interaction. From the perspective of speech
-          representation, most existing speech LLMs either separate the representations for understanding
-          and generation tasks or employ discrete representations for both. The former approach cannot edit
-          speech, while the latter suffers from loss of speech details due to quantization. In terms of speech
-          tasks, there is currently no single model capable of performing semantic and acoustic editing on
-          input speech through free-form instructions. This multiround editing capability has already been
-          well demonstrated in the image domain. To address the issue of inconsistent representations between
-          understanding and generation, we propose a continuous audio tokenizer that unifies both speech
-          understanding and generation tasks. Furthermore, we introduce a novel capability, free-form speech
-          editing, which enables fine-grained and high-fidelity speech manipulation.
-          </p>
-        </div>
-        <!-- </div> -->
-        <!-- </div> -->
-      </div>
-    </div>
-  <!-- </section> -->
-  </div>
-  <!-- End paper abstract -->
-
-
-
 
 
 <div class="main-container2">
@@ -403,13 +377,14 @@
     <!-- <section class="hero is-light"> -->
     <div class="hero-body">
       <div class="container is-max-desktop is-centered has-text-centered">
-        <h2 class="title is-3">Overall Framework of <span style="color: rgb(16, 106, 190);">Ming</span>-UniAudio-Tokenizer</h2>
+        <h2 class="title is-3">Overall Framework of The Unified Continuous Speech Tokenizer: MingTok-Audio</h2>
+        <!-- <h2 class="title is-3">Overall Framework of The Unified Continuous Speech Tokenizer: MingTok-Audio<span style="color: rgb(16, 106, 190);">Ming</span>-UniAudio-Tokenizer</h2> -->
         <div class="item">
           <!-- Your image here -->
           <img src="static/images/uniaudio-tokenizer.png"
             alt="method" />
-          <h2 class="content has-text-justified">
-            The two figures above represent the architecture of Ming-UniAudio-Tokenizer and it's three training stages.
+          <h2 class="content has-text-centered">
+            The two figures above represent the architecture of MingTok-Audio and it's three training stages.
           </h2>
         </div>
       </div>
@@ -418,6 +393,20 @@
     </div>
   </section>
   <!-- End image carousel -->
+</div>
+
+<!-- <div class="main-container-video"> -->
+<div class="main-container">
+    <h2 class="box-title-vedio">Editing Tasks Video demos</h2>
+
+    <div class="video-container">
+        <video src="static/audio/demo-0929-context-edit-insert.mp4" controls></video>
+        <video src="static/audio/demo-0929-context-edit.mp4" controls></video>
+    </div>
+    <div class="video-container">
+        <video src="static/audio/demo-0929-deialect-1.mp4" controls></video>
+        <video src="static/audio/demo-0929-denoise-2.mp4" controls></video>
+    </div>
 </div>
 
     <!-- Edit -->
