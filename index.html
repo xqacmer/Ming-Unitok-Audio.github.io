@@ -277,14 +277,14 @@
 
 
                 <span class="link-block">
-                    <a href="https://huggingface.co/inclusionAI/Ming-UniAudio-16A3B" target="_blank" class="external-link button is-normal is-rounded is-white">
+                    <a href="https://huggingface.co/inclusionAI/Ming-UniAudio-16B-A3B" target="_blank" class="external-link button is-normal is-rounded is-white">
                         <span class="icon">🤗</span>
                         <span>Hugging Face</span>
                     </a>
                 </span>
 
                 <span class="link-block">
-                    <a href="https://modelscope.cn/models/inclusionAI/Ming-UniAudio-16A3B" target="_blank" class="external-link button is-normal is-rounded is-white">
+                    <a href="https://modelscope.cn/models/inclusionAI/Ming-UniAudio-16B-A3B" target="_blank" class="external-link button is-normal is-rounded is-white">
                         <span class="icon">🤖</span>
                         <span>ModelScope</span>
                     </a>
@@ -330,7 +330,7 @@
         editing, which enables fine-grained and high-fidelity speech manipulation.<br><br>
         <strong>- 🔥 First unified continuous speech tokenizer for both understanding and generation tasks:</strong> <a href="https://github.com/inclusionAI/MingTok-Audio"><span style="color: rgb(44, 185, 250); font-weight: bold;">MingTok-Audio</span></a><br>
         <strong>- 🔥 First Speech LLM  with unifed continuous tokenizer for both understanding and generation:</strong> <a href="https://huggingface.co/inclusionAI/Ming-UniAudio-16A3B"><span style="color: rgb(44, 185, 250); font-weight: bold;">Ming-UniAudio</span></a><br>
-        <strong>- 🔥 First universal free-form speech editing model for semantic and acoustic tasks with temporal regime:</strong> <a href="https://huggingface.co/inclusionAI/Ming-UniAudio-16A3B-Edit"><span style="color: rgb(44, 185, 250); font-weight: bold;">Ming-UniAudio-Edit</span></a><br>
+        <strong>- 🔥 First universal free-form speech editing model for semantic and acoustic tasks without temporal regime:</strong> <a href="https://huggingface.co/inclusionAI/Ming-UniAudio-16A3B-Edit"><span style="color: rgb(44, 185, 250); font-weight: bold;">Ming-UniAudio-Edit</span></a><br>
         <strong>- 🔥 First benchmark for free-form speech editing:</strong> <a href="https://huggingface.co/inclusionAI/Ming-Freeform-Audio-Edit-Benchmark"><span style="color: rgb(44, 185, 250); font-weight: bold;">Ming-Freeform-Audio-Edit-Benchmark</span></a><br>
         </p>
     </div>
@@ -341,6 +341,23 @@
 <!-- </section> -->
 </div>
 <!-- End paper abstract -->
+
+<!-- Technical Highlights -->
+<!-- <div class="main-container2">
+<div class="hero-body">
+    <div class="container is-max-desktop is-centered has-text-centered">
+    <h2 class="title is-3">🚀 Technical Highlights</h2>
+    <div class="content has-text-justified">
+        <p>
+        <strong>- 🔥 First unified continuous speech tokenizer for both understanding and generation tasks (<a href="https://github.com/inclusionAI/MingTok-Audio"><span style="color: rgb(44, 185, 250); font-weight: bold;">MingTok-Audio</span></a>):</strong> Ming-UniAudio proposes a unified continuous speech tokenizer MingTok-Audio based on a VAE framework with a causal Transformer architecture, the first continuous speech tokenizer to effectively integrate semantic and acoustic features, and enables a closed-loop system with LLMs through hierarchical feature representations, makes it suitable for both understanding and generation tasks.<br>
+        <strong>- 🔥 First Speech LLM with unifed continuous tokenizer for both understanding and generation: (<a href="https://huggingface.co/inclusionAI/Ming-UniAudio-16A3B"><span style="color: rgb(44, 185, 250); font-weight: bold;">Ming-UniAudio</span></a>):</strong> We pretrain an end-to-end unified speech language model with a single LLM backbone for both understanding and generation tasks, enhanced with a Diffusion Head to ensure high-fidelity speech synthesis.<br>
+        <strong>- 🔥 First universal free-form speech editing model for semantic and acoustic tasks without temporal regime: (<a href="https://huggingface.co/inclusionAI/Ming-UniAudio-16A3B-Edit"><span style="color: rgb(44, 185, 250); font-weight: bold;">Ming-UniAudio-Edit</span></a>):</strong> We introduce the first instruction-guided, free-form speech editing framework that supports comprehensive semantic and acoustic edits without requiring explicit edit regions, along with Ming-Freeform-Audio-Edit, the first open-source evaluation set for such tasks.<br>
+        <strong>- 🔥 First benchmark for free-form speech editing: (<a href="https://huggingface.co/inclusionAI/Ming-Freeform-Audio-Edit-Benchmark"><span style="color: rgb(44, 185, 250); font-weight: bold;">Ming-Freeform-Audio-Edit-Benchmark</span></a>):</strong> We propose Audio-Edit-Benchmark, the first open-source free-form evaluation set comprising editing tasks of four semantic and five acoustic types, to evaluate the model’s editing performance.<br>
+        </p>
+    </div>
+    </div>
+</div>
+</div> -->
 
 <div class="main-container2">
   <!-- Image carousel -->
@@ -960,19 +977,19 @@
                         <tbody>
                             <tr>
                                 <td><audio controls src="static/audio/asr/a1.wav"></audio></td>
-                                <td>[方言-粤语] 你在干什么, 是不是不想聊天。</td>
+                                <td>[方言-粤语] 你做乜嘢啊系咪唔想倾偈啊。</td>
                             </tr>
                             <tr>
                                 <td><audio controls src="static/audio/asr/a11.wav"></audio></td>
-                                <td>[方言-上海话] 我们考试还没定下来呢。</td>
+                                <td>[方言-上海话] 阿拉考试还没定下来唻。</td>
                             </tr>
                             <tr>
                                 <td><audio controls src="static/audio/asr/a2.wav"></audio></td>
-                                <td>[方言-闽南语] 宝贝, 早点休息, 晚安</td>
+                                <td>[方言-闽南语] 宝贝较早休困晚安。</td>
                             </tr>
                             <tr>
                                 <td><audio controls src="static/audio/asr/a22.wav"></audio></td>
-                                <td>[方言-川渝方言] 我难受的很, 别人都睡了。</td>
+                                <td>[方言-川渝方言] 我难受得很别个都睡了。</td>
                             </tr>
                         </tbody>
                     </table>
