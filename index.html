@@ -205,6 +205,24 @@
     }
 }
 
+    .video-container2 video {
+        /* 1. 宽度仍然是100%，让它可以自适应缩小 */
+        width: 100%;
+
+        /* 2. (关键) 设置一个最大宽度，比如 960px */
+        /* 在大屏幕上，视频宽度不会超过这个值 */
+        max-width: 1100px; 
+        
+        /* 3. 同样使用 margin 来居中 */
+        margin-left: auto;
+        margin-right: auto;
+
+        /* 其他样式 */
+        display: block;
+        height: auto;
+        border-radius: 6px;
+    }
+
 </style>
 <body>
 
@@ -400,6 +418,15 @@
     </div>
   </section>
   <!-- End image carousel -->
+</div>
+
+<!-- <div class="main-container-video"> -->
+<div class="main-container">
+    <h2 class="box-title-vedio">The Introduction Video of Ming-UniAudio</h2>
+
+    <div class="video-container2">
+        <video src="static/audio/Ming-UniAudio-1003.mp4" controls></video>
+    </div>
 </div>
 
 <!-- <div class="main-container-video"> -->
